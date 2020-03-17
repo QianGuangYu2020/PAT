@@ -1,0 +1,60 @@
+java:
+import java.util.Scanner;  
+public class Main{  
+	public static void main(String[] args){  
+		Scanner sc = new Scanner(System.in);  
+		int n = sc.nextInt();
+		sc.nextLine();
+		for(int i=0 ;i<n ;i++){
+			String s = sc.nextLine();
+			String news = s;
+			if(news.contains("P")&&news.contains("A")&&news.contains("T")){
+				news = news.replace("A", "");
+				news = news.replace("P", "");
+				news = news.replace("T", "");
+				if(news.isEmpty()){
+					int p = s.indexOf("P");
+					int t = s.indexOf("T");
+					int len = s.length();
+					int b = t-p-1;
+					int c = len -t -1;
+					if(p*b==c){
+						System.out.println("YES");
+					}else{
+						System.out.println("NO");
+					}
+				}else{
+					System.out.println("NO");
+				}
+			}else{
+				System.out.println("NO");
+			}
+		}
+	}
+}
+
+c++:
+#include <iostream>
+#include <map>
+using namespace std;
+int main(){
+    int n,p=0,t=0;
+    string s;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>s;
+        map<char, int> m;
+        for(int j=0;j<s.length();j++){
+            char c=s[j];
+            m[c]++;
+            if(c=='P') p=j;
+            if(c=='T') t=j;
+        }
+        //if(m['P']==1&&m['A']!=0&&m['T']==1&&m.size()== 3&&t-p!=1&&p*(t-p-1)==s.length()-t-1)
+        if(m['P']==1&&m['T']==1&&m['A']>0&&m.size()==3&&t-p!=1&&p*(t-p-1)==s.length()-t-1)
+            cout<<"YES\n";
+        else
+            cout<<"NO\n";
+    }
+    return 0;
+}
