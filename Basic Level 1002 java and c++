@@ -1,0 +1,51 @@
+java:
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s=sc.nextLine();
+        int sum=0;
+        for(char i:s.toCharArray()) {
+        	sum+=Integer.parseInt(i+"");
+        }
+        String str2="";
+        String str=sum+"";
+        char a[]=str.toCharArray();
+        for(int i=0;i<a.length;i++) {
+        	
+        	if(a[i]=='1') str2+="yi";
+        	if(a[i]=='2') str2+="er";
+        	if(a[i]=='3') str2+="san";
+        	if(a[i]=='4') str2+="si";
+        	if(a[i]=='5') str2+="wu";
+        	if(a[i]=='6') str2+="liu";
+        	if(a[i]=='7') str2+="qi";
+        	if(a[i]=='8') str2+="ba";
+        	if(a[i]=='9') str2+="jiu";
+                    	if(a[i]=='0') str2+="ling";
+
+        	if(i!=a.length-1) str2+=" ";
+        }
+        System.out.print(str2);
+    }
+    
+}
+
+c++:
+#include <iostream>
+#include <string>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    int sum=0;
+    string str[10]={"ling","yi","er","san","si","wu","liu","qi","ba","jiu"};
+    for(int i=0;i<s.length();i++)
+        sum+=s[i]-'0';
+    string num=to_string(sum);
+    for(int i=0;i<num.length();i++){
+        if(i!=0) cout<<" ";
+        cout<<str[num[i]-'0'];
+    }
+    return 0;
+}
