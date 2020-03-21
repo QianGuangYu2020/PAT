@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+int isprime(int a){
+    for(int i=2; i*i<=a; i++){
+        if(a%i==0) return 0;
+    }
+    return 1;
+}
+int main(){
+    int m, n;
+    cin>>m>>n;
+    int prime[n+1]={0};
+    int k=1;
+    for(int i=2; k<=n; i++){
+        if(isprime(i)) prime[k++]=i;
+    }
+    int cnt=0;
+    for(int i=m; i<=n; i++){
+        cnt++;
+        if(cnt%10==0||i==n) cout<<prime[i]<<endl;
+        else cout<<prime[i]<<" ";
+    }
+    return 0;
+}
