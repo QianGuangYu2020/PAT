@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int main(){
+    string a, b;
+    int da, db;
+    cin>>a>>da>>b>>db;
+    long n1=0, n2=0;
+    for(int i=0; i<a.length(); i++){
+        if(a[i]-'0'==da){
+            n1=n1*10+da;
+        }
+    }
+    for(int i=0; i<b.length(); i++){
+        if(b[i]-'0'==db){
+            n2=n2*10+db;
+        }
+    }
+    long ans=n1+n2;
+    cout<<ans;
+    return 0;
+}
