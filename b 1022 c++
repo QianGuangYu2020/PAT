@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+string toradix(long a, int d){
+    string ans="";
+    while(a>0){
+        ans+=to_string(a%d);
+        a/=d;
+    }
+    return ans;
+}
+int main(){
+    long a, b;
+    int d;
+    cin>>a>>b>>d;
+    if((a+b)==0){
+        cout<<"0";
+        return 0;
+    }
+    string temp=toradix(a+b, d);
+    for(int i=temp.length()-1; i>=0; i--)
+        cout<<temp[i];
+    return 0;
+}
