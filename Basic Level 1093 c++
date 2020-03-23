@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main(){
+    string a, b, s;
+    getline(cin, a);
+    getline(cin, b);
+    s=a+b;
+    int hash[127]={0};
+    for(int i=0; i<s.length(); i++){
+        if(hash[s[i]]==0) cout<<s[i];
+        hash[s[i]]=1;
+    }
+    return 0;
+}
