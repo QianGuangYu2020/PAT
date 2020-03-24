@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+string seq(string s){
+    string ans="";
+    int temp=0;
+    for(int i=0; i<s.length(); i++){
+        if(i==0) temp++;
+        else if(s[i]==s[i-1]) temp++;
+        else{
+            ans+=s[i-1];
+            ans+=to_string(temp);
+            temp=1;
+        }
+        if(i==s.length()-1){
+            ans+=s[i];
+            ans+=to_string(temp);
+        }
+    }
+    return ans;
+}
+int main(){
+    string d;
+    int n;
+    cin>>d>>n;
+    for(int i=1; i<n; i++){
+        d=seq(d);
+    }
+    cout<<d;
+    return 0;
+}
