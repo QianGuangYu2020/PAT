@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+void output(int n){
+    int a, b, c;
+    c=n%29;
+    n/=29;
+    b=n%17;
+    n/=17;
+    a=n;
+    cout<<a<<"."<<b<<"."<<c;
+}
+int main(){
+    int a, b, c;
+    scanf("%d.%d.%d", &a, &b, &c);
+    int d, e, f;
+    scanf("%d.%d.%d", &d, &e, &f);
+    int n1, n2;
+    n1=(a*17+b)*29+c;
+    n2=(d*17+e)*29+f;
+    if(n1<=n2) output(n2-n1);
+    else{
+        cout<<"-";
+        output(n1-n2);
+    }
+    return 0;
+}
