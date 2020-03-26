@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int n, m, num, id, n1=0, n2=0;
+    cin>>n>>m;
+    int hash[10000]={0};
+    int idx;
+    for(int i=0; i<m; i++){
+        cin>>idx;
+        hash[idx]=1;
+    }
+    for(int i=0; i<n; i++){
+        string name;
+        int flag=1;
+        cin>>name>>num;
+        for(int j=0; j<num; j++){
+            cin>>id;
+            if(hash[id]){
+                if(flag){
+                    n1++;
+                    cout<<name<<":";
+                    flag=0;
+                }
+                n2++;
+                printf(" %04d", id);
+            }
+        }
+        if(flag==0)
+            cout<<endl;
+    }
+    cout<<n1<<" "<<n2;
+    return 0;
+}
