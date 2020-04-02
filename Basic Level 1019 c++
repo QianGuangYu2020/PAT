@@ -1,0 +1,27 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    do{
+        int a[4]={0};
+        string s=to_string(n);
+        for(int i=0; i<s.length(); i++){
+            a[i]=s[i]-'0';
+        }
+        sort(a,a+4);
+
+        int left=0, right=0, sub;
+        for(int i=0; i<4; i++){
+            right=right*10+a[i];
+        }
+        for(int i=3; i>=0; i--){
+            left=left*10+a[i];
+        }
+        sub=left-right;
+        printf("%04d - %04d = %04d\n", left, right, sub);
+        n=sub;
+    }while(n!=0&&n!=6174);
+    return 0;
+}
