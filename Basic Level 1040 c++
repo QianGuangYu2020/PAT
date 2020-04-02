@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    int n1=0, n2=0, start;
+    for(int i=0; i<s.length(); i++){
+        if(s[i]=='P') n1++;
+        if(s[i]=='A'){
+            start=i;
+            for(int j=i; j<s.length(); j++){
+                if(s[j]=='T') n2++;
+            }
+            break;
+        }
+    }
+    double ans=0;
+    for(int i=start; i<s.length(); i++){
+        if(s[i]=='P') n1++;
+        else if(s[i]=='A') ans+=n1*n2;
+        else if(s[i]=='T') n2--;
+    }
+
+    printf("%.0f",fmod(ans,1000000007));
+    return 0;
+}
