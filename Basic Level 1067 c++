@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int main(){
+    string s;
+    int n;
+    cin>>s>>n;
+    getchar();
+    int cnt=0;
+    for(int i=0;; i++){
+        string temp;
+        getline(cin, temp);
+        cnt++;
+        if(temp.length()==1&&temp[0]=='#')
+            break;
+        if(cnt<=n&&temp==s){
+            cout<<"Welcome in"<<endl;
+            return 0;
+        }else if(cnt<=n&&temp!=s){
+            //printf("Wrong password: %s", temp);
+            //printf("\n");
+            cout<<"Wrong password: "<<temp<<endl;
+            if(cnt==n){
+                cout<<"Account locked";
+                break;
+            }
+        }
+    }
+    return 0;
+}
+
+测试点2 5
+Correct%pw 3
+correct%pw
+Correct@PW
+whatisthepassword!
+#
