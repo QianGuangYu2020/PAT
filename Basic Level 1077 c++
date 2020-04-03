@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+int main(){
+    int n, m;
+    cin>>n>>m;
+    double g1, g2, temp;
+    for(int i=0; i<n; i++){
+        cin>>g2;
+        vector<int> v;
+        for(int j=0; j<n-1; j++){
+            cin>>temp;
+            if(temp>=0&&temp<=m){
+                v.push_back(temp);
+            }
+        }
+        sort(v.begin(), v.end());
+        double sum=0;
+        int len=v.size()-1;
+        for(int i=1; i<len; i++){
+            sum+=v[i];
+        }
+        g1=sum/(v.size()-2);
+        printf("%.0f\n", round((g1+g2)/2));
+    }
+    return 0;
+}
