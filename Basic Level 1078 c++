@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+void code(string s){
+    int cnt=1;
+    string ans="";
+    for(int i=1; i<s.length(); i++){
+        if(s[i]==s[i-1]) cnt++;
+        else if(cnt==1){
+            ans+=s[i-1];
+        }
+        else{
+            ans+=to_string(cnt);
+            ans+=s[i-1];
+            cnt=1;
+        }
+    }
+    if(cnt==1){
+        ans+=s[s.length()-1];
+    }
+    else{
+        ans+=to_string(cnt);
+        ans+=s[s.length()-1];
+        cnt=1;
+    }
+    cout<<ans;
+}
+void decode(string s){
+    int k=0;
+    while(k<s.length()){
+        if(isdigit(s[k])){
+            string temp="";
+            while(isdigit(s[k])){
+                temp+=s[k];
+                k++;
+            }
+            for(int i=0; i<atoi(temp.c_str()); i++)
+                cout<<s[k];
+            k++;
+        }else{
+            cout<<s[k];
+            k++;
+        }
+    }
+}
+int main(){
+    char c;
+    cin>>c;
+    getchar();
+    string s;
+    getline(cin, s);
+    if(c=='C'){
+        code(s);
+    }else{
+        decode(s);
+    }
+    return 0;
+}
