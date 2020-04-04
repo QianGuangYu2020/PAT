@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    int left, bottom;
+    if(s.length()%3==0){
+        left=s.length()/3-1;
+        bottom=s.length()/3+2;
+    }else if(s.length()%3==1){
+        left=s.length()/3;
+        bottom=s.length()/3+1;
+    }else{
+        left=s.length()/3;
+        bottom=s.length()/3+2;
+    }
+    int i1=0, i2=s.length()-1;
+    for(int i=0; i<left; i++){
+        cout<<s[i1++];
+        for(int j=0; j<bottom-2; j++) cout<<" ";
+        cout<<s[i2--]<<endl;
+    }
+    for(int i=i1; i<=i2; i++) cout<<s[i];
+    return 0;
+}
