@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+void h1(int a){
+    string s=to_string(a);
+    int cnt=0;
+    string ans="";
+    for(int i=s.length()-1; i>=0; i--){
+        ans=s[i]+ans;
+        cnt++;
+        if(cnt%3==0&&i>0)
+            ans=','+ans;
+
+    }
+    cout<<ans;
+}
+void h2(int a){
+    cout<<"-";
+    h1(-a);
+}
+int main(){
+    int a, b, sum;
+    cin>>a>>b;
+    sum=a+b;
+    if(sum>=0) h1(sum);
+    else h2(sum);
+    return 0;
+}
