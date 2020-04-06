@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+struct stu{
+    string id;
+    int grade, location, loc_rank;
+};
+bool cmp(stu s1, stu s2) {
+    if(s1.grade!=s2.grade) return s1.grade>s2.grade;
+    else return s1.id<s2.id;
+}
+int main(){
+    int n, k, grade;
+    string id;
+    cin>>n;
+    vector<stu> v;
+    stu s;
+    for(int i=0; i<n; i++){
+        cin>>k;
+        vector<stu> temp;
+        for(int j=0; j<k; j++){
+            cin>>s.id>>s.grade;
+            s.location=i+1;
+            temp.push_back(s);
+        }
+
+        sort(temp.begin(), temp.end(), cmp);
+
+        for(int j=0; j<k; j++) {
+            if(j==0) {
+                temp[j].loc_rank=1;
+            }else if(temp[j].grade==temp[j-1].grade){
+                temp[j].loc_rank=temp[j-1].loc_rank;
+            }else {
+                temp[j].loc_rank=j+1;
+            }
+            v.push_back(temp[j]);
+        }
+    }
+    sort(v.begin(), v.end(), cmp);
+    cout<<v.size()<<endl;
+    int rank=1;
+    for(int i=0; i<v.size(); i++) {
+        if(i==0){
+            cout<<v[i].id<<" "<<rank<<" "<<v[i].location<<" "<<v[i].loc_rank<<endl;
+        }else if(v[i].grade==v[i-1].grade){
+            cout<<v[i].id<<" "<<rank<<" "<<v[i].location<<" "<<v[i].loc_rank<<endl;
+        }else {
+            rank=i+1;
+            cout<<v[i].id<<" "<<rank<<" "<<v[i].location<<" "<<v[i].loc_rank<<endl;
+            //printf("%s %d %d %d", v[i].id, rank, v[i].loc_rank);
+        }
+    }
+    return 0;
+}
