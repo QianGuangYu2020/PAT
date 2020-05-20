@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    string s;
+    cin>>s;
+    int sum = 0;
+    for(int i=0; i<s.length(); i++) {
+        sum += (s[i]-'0');
+    }
+    string hash[] = {"zero", "one", "two", "three", "four", "five"
+        		,"six", "seven", "eight", "nine"};
+    string temp = to_string(sum);
+    for(int i=0; i<temp.length(); i++) {
+        cout<<hash[temp[i]-'0'];
+        if(i!=temp.length()-1) cout<<" ";
+    }
+    return 0;
+}
