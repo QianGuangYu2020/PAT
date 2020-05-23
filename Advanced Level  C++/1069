@@ -1,0 +1,43 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int h1(int n) {
+    int a[4]={0};
+    string s=to_string(n);
+    for(int i=0; i<s.length(); i++) {
+        a[i]=s[i]-'0';
+    }
+    sort(a,a+4);
+    int ans=0;
+
+    for(int i=3; i>=0; i--) {
+        ans=ans*10+a[i];
+    }
+    return ans;
+}
+int h2(int n) {
+    int a[4]={0};
+    string s=to_string(n);
+    for(int i=0; i<s.length(); i++) {
+        a[i]=s[i]-'0';
+    }
+    sort(a,a+4);
+    int ans=0;
+    for(int i=0; i<4; i++) {
+        ans=ans*10+a[i];
+    }
+    return ans;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int temp=h1(n)-h2(n);
+    while(temp!=0&&temp!=6174) {
+        printf("%04d - %04d = %04d\n",h1(n), h2(n), temp);
+        n=temp;
+        temp=h1(n)-h2(n);
+    }
+    printf("%04d - %04d = %04d\n",h1(n), h2(n), temp);
+    return 0;
+}
